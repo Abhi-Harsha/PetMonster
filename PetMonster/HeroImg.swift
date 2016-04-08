@@ -18,6 +18,8 @@ class HeroImg: UIImageView {
         super.init(coder: aDecoder)
     }
     
+    var isHeroImageSelected: Bool = false
+    
     func AnimateHeroAttack() {
         self.animationImages = nil
         
@@ -35,19 +37,27 @@ class HeroImg: UIImageView {
     }
     
     func AnimateDeadHero() {
+        self.image = UIImage(named: "herodead (5).png")
         self.animationImages = nil
         
         var ImageArray = [UIImage]()
         
-        for x in 1...5 {
+        for x in 1 ... 5 {
             let img = UIImage(named: "herodead (\(x)).png")
             ImageArray.append(img!)
         }
         
         self.animationImages = ImageArray
-        self.animationDuration = 0.2
+        self.animationDuration = 1.0
         self.animationRepeatCount = 1
         self.startAnimating()
+        
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            isHeroImageSelected = true
+        }
     }
 
 }

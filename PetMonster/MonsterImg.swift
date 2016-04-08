@@ -18,6 +18,7 @@ class MonsterImg: UIImageView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    var isMonsterTouched: Bool = false
 
     func AnimateIdleMonster() {
         
@@ -35,6 +36,7 @@ class MonsterImg: UIImageView {
     }
     
     func AnimateDeadMonster() {
+        self.image = UIImage(named: "dead5.png")
         
         self.animationImages = nil
         var ImageArray = [UIImage]()
@@ -48,5 +50,21 @@ class MonsterImg: UIImageView {
         self.animationRepeatCount = 1
         self.startAnimating()
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            isMonsterTouched = true
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
